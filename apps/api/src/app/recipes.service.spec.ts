@@ -15,7 +15,7 @@ describe('RecipesService', () => {
     service = app.get<RecipesService>(RecipesService);
   });
 
-  describe('getData', () => {
+  describe('getRecipesAsync', () => {
     it('should return some recipes', async () => {
       expect(await service.getRecipesAsync()).toMatchObject<Partial<Recipe>[]>([
         { name: 'Pancakes' },
