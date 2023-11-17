@@ -1,7 +1,6 @@
 import { Recipe } from '@wndr.foodie/models';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   StatusBar,
@@ -10,8 +9,11 @@ import {
   Text,
   FlatList,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 export const App = () => {
+  throw new Error('ERRORRRRR');
   const scrollViewRef = useRef<null | ScrollView>(null);
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<Recipe[]>([]);
@@ -35,35 +37,34 @@ export const App = () => {
   }, []);
 
   return (
-    <>
+    <Provider store={store}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        {/* <ScrollView
+      {/* <SafeAreaView> */}
+      {/* <ScrollView
           ref={(ref) => {
             scrollViewRef.current = ref;
           }}
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}
         > */}
-        <View style={{ padding: 24 }}>
-          <Text>Loading: {isLoading}</Text>
-          {isLoading ? (
-            <ActivityIndicator />
-          ) : (
-            <FlatList
-              data={data}
-              keyExtractor={({ id }) => id}
-              renderItem={({ item }) => (
-                <Text>
-                  {item.name}, {item.description}
-                </Text>
-              )}
-            />
-          )}
-        </View>
-        {/* </ScrollView> */}
-      </SafeAreaView>
-    </>
+      <View style={{ padding: 24 }}>
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={data}
+            keyExtractor={({ id }) => id}
+            renderItem={({ item }) => (
+              <Text>
+                {item.name}, {item.description}
+              </Text>
+            )}
+          />
+        )}
+      </View>
+      {/* </ScrollView> */}
+      {/* </SafeAreaView> */}
+    </Provider>
   );
 };
 const styles = StyleSheet.create({
