@@ -1,20 +1,21 @@
 import { Stack } from 'expo-router/stack';
+import { Provider } from 'react-redux';
 
-export default function Layout() {
+import { store } from './store/store';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function App() {
   return (
-    <Stack>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="home" />
-    </Stack>
+    <Provider store={store}>
+      <StatusBar style="auto" />
+      <SafeAreaProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          {/* Here will be the main content screen, any screen for modals. Inside top-content, in the home screen,
+      there will be another stack using tabs?? */}
+          <Stack.Screen name="index" />
+        </Stack>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
-
-// screenOptions={{
-//   headerStyle: {
-//     backgroundColor: '#f4511e',
-//   },
-//   headerTintColor: '#fff',
-//   headerTitleStyle: {
-//     fontWeight: 'bold',
-//   },
-// }}

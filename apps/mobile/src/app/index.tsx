@@ -1,28 +1,11 @@
-import { Stack } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useRecipesEffects } from './recipes/store/recipes.effects';
 
+// Expand with login screen, and navigation to home screen
 export default function Index() {
-  return (
-    <>
-      <Stack.Screen />
-      <View style={styles.fullScreen}>
-        <Text>Home Screen</Text>
-      </View>
-    </>
-  );
+  // Use all features effects
+  useRecipesEffects();
+
+  // By default - redirect to /home
+  return <Redirect href="/home" />;
 }
-
-// options={{
-//     title: 'index',
-//     headerStyle: { backgroundColor: '#f4511e' },
-//     headerTintColor: '#fff',
-//     headerTitleStyle: {
-//       fontWeight: 'bold',
-//     },
-//   }}
-
-const styles = StyleSheet.create({
-  fullScreen: {
-    flex: 1,
-  },
-});

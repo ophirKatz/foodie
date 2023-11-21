@@ -17,7 +17,9 @@
     "react": "*",
     "react-redux": "*",
     "@reduxjs/toolkit": "*",
-    "expo-router": "*"
+    "expo-router": "*",
+    "expo-status-bar": "*",
+    "react-native-safe-area-context": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/mobile && cp yarn.lock apps/mobile",

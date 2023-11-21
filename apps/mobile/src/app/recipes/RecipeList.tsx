@@ -1,15 +1,22 @@
-import React from 'react';
-
-import { View, Text } from 'react-native';
+import { FlatList, Text } from 'react-native';
+import { Recipe } from '@wndr.foodie/models';
 
 /* eslint-disable-next-line */
-export interface RecipeListProps {}
+export interface RecipeListProps {
+  recipes: Recipe[];
+}
 
 export function RecipeList(props: RecipeListProps) {
   return (
-    <View>
-      <Text>Welcome to recipe-list!</Text>
-    </View>
+    <FlatList
+      data={props.recipes}
+      keyExtractor={({ id }) => id}
+      renderItem={({ item }) => (
+        <Text>
+          {item.name}, {item.description}
+        </Text>
+      )}
+    />
   );
 }
 

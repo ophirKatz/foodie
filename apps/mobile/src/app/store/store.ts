@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import recipesReducer from '../recipes/store/recipes.slice';
+import recipesReducer, { RecipesState } from '../recipes/store/recipes.slice';
 
-export const store = configureStore({
+export interface State {
+  recipes: RecipesState;
+}
+
+export const store = configureStore<State>({
   reducer: {
     recipes: recipesReducer,
   },
