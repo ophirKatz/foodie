@@ -15,8 +15,8 @@ export default function HomeLayout() {
   return (
     <View style={styles.fullScreen}>
       <Tabs screenOptions={{ headerShown: false }}>
-        <Tabs.Screen name="saved" />
         <Tabs.Screen name="recipes" />
+        <Tabs.Screen name="saved" />
         <Tabs.Screen name="discover" />
         <Tabs.Screen name="profile" />
       </Tabs>
