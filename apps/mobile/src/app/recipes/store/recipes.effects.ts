@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { recipesActions } from './recipes.slice';
 
-export function useRecipesEffects() {
+function useGetRecipes() {
   const dispatch = useDispatch();
 
   const getRecipesAsync = async () => {
@@ -17,6 +18,11 @@ export function useRecipesEffects() {
 
   useEffect(() => {
     getRecipesAsync();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+}
+
+export function useRecipesEffects() {
+  return {
+    reloadRecipes: useGetRecipes,
+  };
 }
