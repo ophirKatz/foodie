@@ -11,7 +11,6 @@ export function RecipeList(props: RecipeListProps) {
   console.log(props.recipes.map((x) => x.name));
   return (
     <FlatList
-      style={styles.listContainer}
       data={props.recipes}
       keyExtractor={({ id }) => id}
       renderItem={({ item }) => (
@@ -24,11 +23,6 @@ export function RecipeList(props: RecipeListProps) {
 }
 
 const styles = StyleSheet.create({
-  listContainer: {
-    display: 'flex',
-    gap: 4,
-    padding: 16,
-  },
   listItem: {
     marginBottom: 32,
   },

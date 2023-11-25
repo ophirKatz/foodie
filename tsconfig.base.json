@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wndr.foodie/components": ["libs/components/src/index.ts"],
       "@wndr.foodie/models": ["libs/models/src/index.ts"]
     }
   },

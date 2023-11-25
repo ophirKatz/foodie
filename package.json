@@ -6,10 +6,12 @@
   "private": true,
   "dependencies": {
     "@expo/metro-config": "~0.10.7",
+    "@expo/webpack-config": "^19.0.0",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
     "@reduxjs/toolkit": "^1.9.7",
+    "@types/react-native": "0.72.6",
     "axios": "^1.0.0",
     "expo": "49.0.16",
     "expo-constants": "^14.4.2",

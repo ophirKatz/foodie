@@ -23,6 +23,6 @@ function useGetRecipes() {
 
 export function useRecipesEffects() {
   return {
-    reloadRecipes: useGetRecipes,
+    reloadRecipesEffect: useGetRecipes,
   };
 }
