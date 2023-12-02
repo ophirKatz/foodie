@@ -99,7 +99,7 @@ export class Db {
         },
       ],
       servings: 6,
-      tags: ['Sweet', 'Dairy', 'Appetizer'],
+      tags: ['Asian', 'Beef'],
     };
 
     return Promise.resolve([recipe, recipe2]);

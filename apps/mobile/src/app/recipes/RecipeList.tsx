@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { Recipe } from '@wndr.foodie/models';
 import RecipeCard from './RecipeCard';
+import { ListSeparator } from '@wndr.foodie/components';
 
 /* eslint-disable-next-line */
 export interface RecipeListProps {
@@ -8,24 +9,15 @@ export interface RecipeListProps {
 }
 
 export function RecipeList(props: RecipeListProps) {
-  console.log(props.recipes.map((x) => x.name));
+  // console.log(props.recipes);
   return (
     <FlatList
       data={props.recipes}
       keyExtractor={({ id }) => id}
-      renderItem={({ item }) => (
-        <View style={styles.listItem}>
-          <RecipeCard recipe={item} />
-        </View>
-      )}
+      renderItem={({ item }) => <RecipeCard recipe={item} />}
+      ItemSeparatorComponent={() => <ListSeparator height={16} />}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  listItem: {
-    marginBottom: 32,
-  },
-});
 
 export default RecipeList;

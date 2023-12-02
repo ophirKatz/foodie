@@ -21,8 +21,5 @@ export default function HomeLayout() {
         <Tabs.Screen name="profile" />
       </Tabs>
     </View>
-    // <SafeAreaView style={styles.fullScreen}>
-
-    // </SafeAreaView>
   );
 }
