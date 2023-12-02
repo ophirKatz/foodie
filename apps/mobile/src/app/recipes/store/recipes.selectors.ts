@@ -25,14 +25,17 @@ const selectedTagsSelector = createSelector([tagsSelector], (tags) => {
   return Object.keys(tags).filter((tag) => tags[tag]);
 });
 
+const isTagSelectionActive = createSelector(
+  [selectedTagsSelector],
+  (tags) => tags.length !== 0
+);
+
 const filteredRecipesListSelector = createSelector(
-  [recipesListSelector, selectedTagsSelector],
-  (recipes, selectedTags) => {
-    console.log('recipes', recipes, 'selectedTags', selectedTags);
-    return recipes.filter((x) =>
-      x.tags.some((tag) => selectedTags.includes(tag))
-    );
-  }
+  [recipesListSelector, selectedTagsSelector, isTagSelectionActive],
+  (recipes, selectedTags, isActive) =>
+    isActive
+      ? recipes.filter((x) => x.tags.some((tag) => selectedTags.includes(tag)))
+      : recipes
 );
 
 export const useFilteredRecipeList = () =>

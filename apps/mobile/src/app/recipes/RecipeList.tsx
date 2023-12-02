@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { Recipe } from '@wndr.foodie/models';
 import RecipeCard from './RecipeCard';
 import { ListSeparator } from '@wndr.foodie/components';
@@ -9,7 +9,6 @@ export interface RecipeListProps {
 }
 
 export function RecipeList(props: RecipeListProps) {
-  // console.log(props.recipes);
   return (
     <FlatList
       data={props.recipes}
