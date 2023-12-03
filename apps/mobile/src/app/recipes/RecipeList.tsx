@@ -15,6 +15,7 @@ export function RecipeList(props: RecipeListProps) {
       keyExtractor={({ id }) => id}
       renderItem={({ item }) => <RecipeCard recipe={item} />}
       ItemSeparatorComponent={() => <ListSeparator height={16} />}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

@@ -21,7 +21,8 @@
     "expo-status-bar": "*",
     "react-native-safe-area-context": "*",
     "react-native-paper": "*",
-    "expo-linear-gradient": "*"
+    "expo-linear-gradient": "*",
+    "expo-image": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/mobile && cp yarn.lock apps/mobile",

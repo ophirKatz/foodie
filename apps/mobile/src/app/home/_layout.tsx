@@ -1,3 +1,4 @@
+import { rootStyles } from '@wndr.foodie/components';
 import { Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,6 +10,7 @@ export default function HomeLayout() {
     fullScreen: {
       flex: 1,
       paddingTop: insets.top,
+      // backgroundColor: 'red',
     },
   });
 
@@ -17,6 +19,12 @@ export default function HomeLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
+          tabBarIconStyle: {
+            color: rootStyles.primaryColorDark.color,
+          },
+          tabBarLabelStyle: {
+            color: rootStyles.primaryColorDark.color,
+          },
         }}
       >
         <Tabs.Screen name="recipes" />

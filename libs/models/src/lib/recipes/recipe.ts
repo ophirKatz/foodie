@@ -12,6 +12,10 @@ export interface Recipe {
   coverPhotoUrl?: string;
   linkToVideo?: string;
   linkToWebsite?: string;
+  rating: number;
+  isVegan?: boolean;
+  isSpicy?: boolean;
+  isGlutenFree?: boolean;
   servings?: number;
   tags: string[];
 }

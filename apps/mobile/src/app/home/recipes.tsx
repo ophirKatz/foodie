@@ -6,7 +6,7 @@ import {
   useTags,
   useTagsList,
 } from '../recipes/store/recipes.selectors';
-import { SearchBar, TagList } from '@wndr.foodie/components';
+import { SearchBar, TagList, rootStyles } from '@wndr.foodie/components';
 import { useDispatch } from 'react-redux';
 import { recipesActions } from '../recipes/store/recipes.slice';
 
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 8,
     display: 'flex',
+    ...rootStyles.primaryBgColor,
   },
   searchBarContainer: {},
   listContainer: {

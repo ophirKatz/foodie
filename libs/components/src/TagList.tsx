@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { GradientBorder } from './GradientBorder';
 import { ListSeparator } from './ListSeparator';
+import { rootStyles } from './styles';
 
 export type TagItem = {
   data: string;
@@ -37,7 +38,7 @@ const Tag = (props: TagProps) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
       <GradientBorder
-        colors={['#a0cfd3', '#8d94ba']}
+        colors={[rootStyles.primaryColorLight.color, rootStyles.primaryColor.color, rootStyles.primaryColorDark.color]}
         borderWidth={2}
         borderRadius={16}
         backgroundColor={props.tag.isSelected ? 'transparent' : 'white'}
