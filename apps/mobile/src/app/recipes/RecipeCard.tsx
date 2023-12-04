@@ -6,6 +6,27 @@ import { Button, Icon, MD3Colors } from 'react-native-paper';
 import { Image } from 'expo-image';
 
 /* eslint-disable-next-line */
+
+interface RecipeInfoItemProps {
+  icon: string;
+  data?: string;
+}
+
+function RecipeInfoItem(props: RecipeInfoItemProps) {
+  return (
+    <View style={styles.recipeInfoItemContainer}>
+      <View style={styles.iconContainer}>
+        <Icon
+          source={props.icon}
+          size={16}
+          color={rootStyles.primaryTextColor.color}
+        />
+      </View>
+      {props.data ? <Text>{props.data}</Text> : <View></View>}
+    </View>
+  );
+}
+
 export interface RecipeCardProps {
   recipe: Recipe;
   isSaved: boolean;
@@ -32,48 +53,27 @@ export function RecipeCard(props: RecipeCardProps) {
           transition={1000}
         />
       </View>
-      <View style={styles.cardContent}>
-        <View style={rootStyles.flexRow}>
-          <Text style={styles.title}>{props.recipe.name}</Text>
-          <Icon
-            source="star"
-            size={16}
-            color={rootStyles.primaryTextColorDark.color}
-          />
-          <Text style={styles.title}>{props.recipe.rating}</Text>
+      <View style={styles.contentOuterContainer}>
+        <View style={styles.leftGhost} />
+        <View style={styles.rightGhost} />
+        <View style={styles.bottomGhost} />
+        <View style={styles.cardContent}>
+          <View style={rootStyles.flexRow}>
+            <Text style={styles.title}>{props.recipe.name}</Text>
+            <Icon
+              source="star"
+              size={16}
+              color={rootStyles.primaryTextColorDark.color}
+            />
+            <Text style={styles.title}>{props.recipe.rating}</Text>
+          </View>
+          <View style={styles.recipeInfoItemsContainer}>
+            <RecipeInfoItem icon="food" data={props.recipe.servings} />
+            <RecipeInfoItem icon="leaf" />
+            <RecipeInfoItem icon="chili-hot" />
+          </View>
+          {/* <View style={styles.recipeTagsContainer}></View> */}
         </View>
-        <View style={styles.recipeInfoContainer}>
-          <View style={styles.recipeInfoItemContainer}>
-            <View style={styles.iconContainer}>
-              <Icon
-                source="food"
-                size={16}
-                color={rootStyles.primaryTextColor.color}
-              />
-            </View>
-            <Text>{props.recipe.servings}</Text>
-          </View>
-          <View style={styles.recipeInfoItemContainer}>
-            <View style={styles.iconContainer}>
-              <Icon
-                source="leaf"
-                size={16}
-                color={rootStyles.primaryTextColor.color}
-              />
-            </View>
-          </View>
-          <View style={styles.recipeInfoItemContainer}>
-            <View style={styles.iconContainer}>
-              <Icon
-                source="chili-hot"
-                size={16}
-                color={rootStyles.primaryTextColor.color}
-              />
-            </View>
-          </View>
-        </View>
-
-        {/* <View style={styles.recipeTagsContainer}></View> */}
       </View>
     </View>
   );
@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: 360,
     borderRadius: 12,
+    // borderWidth: 1,
+    // borderColor: rootStyles.primaryTextColor.color,
   },
   cardCover: {
     height: 240,
@@ -95,8 +97,11 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 12,
   },
-  cardContent: {
+  contentOuterContainer: {
     height: 120,
+    display: 'flex',
+  },
+  cardContent: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     marginEnd: 2,
   },
-  recipeInfoContainer: {
+  recipeInfoItemsContainer: {
     display: 'flex',
     flexDirection: 'column',
   },
@@ -117,4 +122,31 @@ const styles = StyleSheet.create({
   recipeTagsContainer: {
     width: '100%',
   },
+
+  leftGhost: {
+    alignSelf: 'flex-start',
+    height: 72,
+    width: 36,
+    position: 'absolute',
+    borderStartWidth: 1,
+    borderBottomWidth: 1,
+    // borderColor: rootStyles.primaryTextColor.color,
+    borderColor: `linear-gradient(to right ${rootStyles.primaryColor.color}, ${rootStyles.primaryTextColor.color})`,
+    zIndex: 5,
+    marginTop: 48,
+    borderBottomStartRadius: 12,
+  },
+  rightGhost: {
+    alignSelf: 'flex-end',
+    height: 72,
+    width: 36,
+    position: 'absolute',
+    borderEndWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: rootStyles.primaryTextColor.color,
+    zIndex: 5,
+    marginTop: 48,
+    borderBottomEndRadius: 12,
+  },
+  bottomGhost: {},
 });
